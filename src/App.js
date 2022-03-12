@@ -14,7 +14,7 @@ const App = () => {
   const [id, setId] = useState(0)
   // for input bar
   const [taskName, setTaskName] = useState()
-
+  // Get the value of the input 
 
   const removeCard = ({id,array,stage}) => {
     if (stage===stageOrder[0]) {
@@ -80,7 +80,7 @@ const App = () => {
     )
   }
 
-  
+ 
 
   return (
     <>
@@ -92,9 +92,10 @@ const App = () => {
         <div className="new-task">
           <input autoComplete='off' id='input' maxLength='50' type="text" placeholder="Enter new task name" onChange={(e)=>setTaskName(e.target.value)}/>
           <button onClick={()=>{
-            taskName&&
+            (document.getElementById('input').value)&&
             setBackLogTask((backLogTask)=>[...backLogTask,{'id':id,'name':taskName,'stage':stageOrder[0]}])
             setId((id)=>id+1)
+
             document.getElementById('input').value=''
           }
           }>Create Task</button>
